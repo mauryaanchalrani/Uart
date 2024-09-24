@@ -1,39 +1,65 @@
 #include <stdint.h>
 #include <stdbool.h>
-
-#include "TM4C1233E6PZ.h"
+#include "inc/TM4C1233E6PZ.h"
 #include "GPIO.h"
 #include "TIMER.h"
 #include "common.h"
 #include "schedular.h"
-void delay_ms(uint32_t delay);
+#include "driverlib/interrupt.h"
+#include "uart.h"
+#include "driverlib/sysctl.h"
+//#include "eeprom.h"
+//#include "driverlib/eeprom.h"
+//#include "spi.h"
+
 schedular_flg_t schedular_flg;
+
 int main(void)
-{
-    //Timer0_Init();
-    setGPIO_Direction(PORTH,PIN1,OUTPUT);
-    writeGPIO(PORTH,PIN1,1);
+ {
+    Timer0_Init();
+    setGPIO_Direction(PORTE,PIN1,OUTPUT);
+    //setGPIO_Direction(PORTE,PIN5,OUTPUT);
+    //setGPIO_Direction(PORTE,PIN0,OUTPUT);
+    //setGPIO_Direction(PORTE,PIN1,OUTPUT);
+
+
+    SysCtlClockSet(SYSCTL_SYSDIV_5 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
+    UART5_Init();
+
+    writeGPIO(PORTE,PIN1,1);
+    IntMasterEnable();
+
     while(1)
     {
+
         //toggleGPIO(PORTF,PIN4);
         //writeGPIO(PORTH,PIN1,1);
+
         if(schedular_flg.flg_10ms==true)
         {
             schedular_flg.flg_10ms=false;
-            toggleGPIO(PORTF,PIN4);
+           // UART5_SendString("Wi-fi Connecting..\n");
+            //toggleGPIO(PORTE,PIN4);
         }
         if(schedular_flg.flg_50ms==true)
         {
             schedular_flg.flg_50ms=false;
+           // toggleGPIO(PORTE,PIN0);
+            //UART5_SendString("Hello..\n");
         }
         if(schedular_flg.flg_100ms==true)
         {
             schedular_flg.flg_100ms=false;
+           // UART5_SendString("Anchal...\n");
+            //toggleGPIO(PORTE,PIN1);
         }
         if(schedular_flg.flg_1sec==true)
         {
             schedular_flg.flg_1sec=false;
+            UART5_SendString("ALE...");
+           // toggleGPIO(PORTE,PIN4);
         }
+       // UART5_Handler0();
 
     }
 }
@@ -45,6 +71,9 @@ void delay_ms(uint32_t delay)
 
     for (i = 0; i < cycles; i++) {
         // Empty loop to create delay
-        __asm("NOP");
+        __asm(" NOP");
     }
 }
+
+
+

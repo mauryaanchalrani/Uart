@@ -1,22 +1,23 @@
 #include <stdint.h>
 #include <stdbool.h>
-#include "tm4c1233e6pz.h"
+#include "inc/TM4C1233E6PZ.h"
 #include "TIMER.h"
 #include "schedular.h"
+#include "GPIO.h"
+
 
 schedular_flg_t schedular_flg;
-
 void Timer0_Init()
 {
     uint32_t load_value = (SYSTEM_CLOCK_HZ / 1000) * TIMER0_VALUE - 1;
 
-    SYSCTL_RCGCTIMER_R |= 0x01; // Enable Timer 0
-    TIMER0_CTL_R &= ~0x01;      // Disable Timer 0
-    TIMER0_CFG_R = 0x00;        // 32-bit mode
-    TIMER0_TAMR_R = 0x02;       // Periodic mode
+    SYSCTL_RCGCTIMER_R |= 0x01;  // Enable Timer 0 cLOCK
+    TIMER0_CTL_R &= ~0x01;       // Disable Timer 0
+    TIMER0_CFG_R =  0x00;         // 32-bit mode
+    TIMER0_TAMR_R = 0x02;        // Periodic mode
     TIMER0_TAILR_R = load_value; // Load interval
-    TIMER0_ICR_R = 0x01;        // Clear interrupt
-    TIMER0_IMR_R = 0x01;        // Enable interrupt
+    TIMER0_ICR_R = 0x01;         // Clear interrupt
+    TIMER0_IMR_R = 0x01;         // Enable interrupt
     TIMER0_CTL_R |= 0x01;       // Enable Timer 0
 
     NVIC_EN0_R |= (1 << 19);    // Enable Timer 0 interrupt in NVIC
@@ -25,11 +26,14 @@ void Timer0_Init()
 
 void Timer0_Handler(void)
 {
-    static unsigned char cnt_50ms = 0;
-    static unsigned char cnt_100ms = 0;
-    static unsigned int cnt_1sec = 0;
+    //disable_irq();
+    //writeGPIO(PORTE,PIN4,1);
 
-    TIMER0_ICR_R = 0x01; // Clear interrupt flag
+    static unsigned char cnt_50ms  = 0;
+    static unsigned char cnt_100ms = 0;
+    static unsigned int  cnt_1sec  = 0;
+
+    TIMER0_ICR_R |= 0x01; // Clear interrupt flag
 
     schedular_flg.flg_10ms  = true;
     if(cnt_50ms++ >= SCHEDULE_50MS_CNT)
@@ -47,5 +51,23 @@ void Timer0_Handler(void)
         cnt_1sec = 0;
         schedular_flg.flg_1sec = true;
     }
+
 }
+void disable_irq(void)
+{
+    uint32_t primask = PRIMASK; // Read the current PRIMASK value
+    primask |= 1;               // Set the PRIMASK bit to disable interrupts
+    PRIMASK |= primask;         // Write the new value back to the PRIMASK register
+}
+
+// Enable global interrupts
+void enable_irq(void)
+{
+    uint32_t primask = PRIMASK; // Read the current PRIMASK value
+    primask &= ~1;              // Clear the PRIMASK bit to enable interrupts
+    PRIMASK |= primask;         // Write the new value back to the PRIMASK register
+    writeGPIO(PORTE,PIN4,0);
+}
+
+
 

@@ -11,6 +11,7 @@ tm4c1233e6pz_startup_ccs.obj: C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5
 tm4c1233e6pz_startup_ccs.obj: C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_types.h
 tm4c1233e6pz_startup_ccs.obj: C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_stdint.h
 tm4c1233e6pz_startup_ccs.obj: C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/_stdint.h
+tm4c1233e6pz_startup_ccs.obj: ../Source/TIMER.h
 
 ../tm4c1233e6pz_startup_ccs.c:
 
@@ -33,4 +34,6 @@ C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_types.h:
 C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_stdint.h:
 
 C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/_stdint.h:
+
+../Source/TIMER.h:
 

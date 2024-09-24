@@ -22,7 +22,4 @@ typedef struct
 #define SCHEDULE_1SEC_CNT   1000/TIMER0_VALUE
 
 void schedularInit( void );
-
-
-
 #endif /* SOURCE_SCHEDULAR_H_ */

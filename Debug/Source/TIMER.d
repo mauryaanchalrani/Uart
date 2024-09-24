@@ -12,9 +12,10 @@ Source/TIMER.obj: C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include
 Source/TIMER.obj: C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/machine/_stdint.h
 Source/TIMER.obj: C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/_stdint.h
 Source/TIMER.obj: C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdbool.h
-Source/TIMER.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/tm4c1233e6pz.h
+Source/TIMER.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/TM4C1233E6PZ.h
 Source/TIMER.obj: ../Source/TIMER.h
 Source/TIMER.obj: ../Source/schedular.h
+Source/TIMER.obj: ../Source/GPIO.h
 
 ../Source/TIMER.c:
 
@@ -40,9 +41,11 @@ C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/_stdint.h:
 
 C:/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdbool.h:
 
-C:/ti/TivaWare_C_Series-2.2.0.295/inc/tm4c1233e6pz.h:
+C:/ti/TivaWare_C_Series-2.2.0.295/inc/TM4C1233E6PZ.h:
 
 ../Source/TIMER.h:
 
 ../Source/schedular.h:
+
+../Source/GPIO.h:
 
