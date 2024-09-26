@@ -40,7 +40,7 @@ void UART5_Init(void) {
     UART5_CTL_R |= UART_CTL_RXE | UART_CTL_TXE | UART_CTL_UARTEN;
 
     UART5_IM_R |= UART_IM_RXIM; // Enable receive interrupt
-    NVIC_EN0_R |= (1 << (INT_UART5 - 16));
+    NVIC_EN2_R |= (1 << (INT_UART5 - 16));
 
 }
 
@@ -56,7 +56,7 @@ void IntDefaultHandler(void) {
         // Your code to handle the received data
         // For demonstration, toggle a GPIO pin to show data was received
         toggleGPIO(PORTE, PIN1);
-        UART5_SendString("hello\n");
+
         // Optionally, you can process the received data here
         // Example: Print received data over UART (echo back)
         UART5_SendChar(receivedData);
