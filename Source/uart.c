@@ -39,23 +39,31 @@ void UART5_Init(void) {
     // Enable UART5 for TX and RX
     UART5_CTL_R |= UART_CTL_RXE | UART_CTL_TXE | UART_CTL_UARTEN;
 
-}
-//int i=2;
-void UART5_Handler0(void)
-{
-    toggleGPIO(PORTE, PIN1);
-  // GPIO_PORTE_DIR_R |= (1<<1);
-    //GPIO_PORTE_DEN_R |= (1<<4);
-//    if(i==2)
-//    {
-//        toggleGPIO(PORTE, PIN4);
-//    }
-//    else
-//    {
-//       // UART5_SendString("H..");
-//    }
+    UART5_IM_R |= UART_IM_RXIM; // Enable receive interrupt
+    NVIC_EN0_R |= (1 << (INT_UART5 - 16));
 
 }
+
+void IntDefaultHandler(void) {
+    // Check if the interrupt is caused by receiving data (RX interrupt)
+    if (UART5_MIS_R & UART_MIS_RXMIS) {
+        // Clear the interrupt flag for receive
+        UART5_ICR_R |= UART_ICR_RXIC;
+
+        // Read the received data from the data register
+        char receivedData = UART5_DR_R & 0xFF;  // Mask to get the lowest 8 bits (data)
+
+        // Your code to handle the received data
+        // For demonstration, toggle a GPIO pin to show data was received
+        toggleGPIO(PORTE, PIN1);
+        UART5_SendString("hello\n");
+        // Optionally, you can process the received data here
+        // Example: Print received data over UART (echo back)
+        UART5_SendChar(receivedData);
+    }
+}
+
+
 
 // Function to send a character over UART5
 void UART5_SendChar(char c) {

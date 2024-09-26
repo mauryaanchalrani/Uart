@@ -42,6 +42,7 @@ static void IntDefaultHandler(void);
 //*****************************************************************************
 extern void _c_int00(void);
 extern void Timer0_Handler(void);
+
 //*****************************************************************************
 //
 // Linker variable that marks the top of the stack.
