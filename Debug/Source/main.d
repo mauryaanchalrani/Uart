@@ -20,7 +20,6 @@ Source/main.obj: ../Source/schedular.h
 Source/main.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/interrupt.h
 Source/main.obj: ../Source/uart.h
 Source/main.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/sysctl.h
-Source/main.obj: ../Source/eeprom.h
 
 ../Source/main.c:
 
@@ -61,6 +60,4 @@ C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/interrupt.h:
 ../Source/uart.h:
 
 C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/sysctl.h:
-
-../Source/eeprom.h:
 

@@ -8,7 +8,7 @@
 #include "driverlib/interrupt.h"
 #include "uart.h"
 #include "driverlib/sysctl.h"
-#include "eeprom.h"
+//#include "eeprom.h"
 //#include "driverlib/eeprom.h"
 //#include "spi.h"
 
@@ -28,7 +28,7 @@ int main(void)
 
     writeGPIO(PORTE,PIN1,1);
     IntMasterEnable();
-     //__asm(" CPSIE I");      // enable
+     __asm(" CPSIE I");      // enable
     //__asm(" CPSID I");    // disable
     while(1)
     {

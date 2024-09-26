@@ -1,7 +1,7 @@
 ******************************************************************************
                   TI ARM Linker PC v20.2.5                     
 ******************************************************************************
->> Linked Thu Sep 26 18:07:09 2024
+>> Linked Thu Sep 26 18:17:56 2024
 
 OUTPUT FILE NAME:   <TI_PERIPHERALS.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00000935
@@ -176,7 +176,7 @@ UNDEFED   _system_post_cinit
 000009bb  _system_pre_init              
 000009bf  abort                         
 ffffffff  binit                         
-0000078b  delay_ms                      
+0000078d  delay_ms                      
 00000563  disable_irq                   
 000003d9  enableGPIOClock               
 00000583  enable_irq                    
@@ -215,7 +215,7 @@ address   name
 000006a7  UART5_SendChar                
 000006c3  UART5_SendString              
 00000729  main                          
-0000078b  delay_ms                      
+0000078d  delay_ms                      
 000007ed  __aeabi_memcpy                
 000007ed  __aeabi_memcpy4               
 000007ed  __aeabi_memcpy8               
