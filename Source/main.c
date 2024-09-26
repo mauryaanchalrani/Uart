@@ -56,7 +56,7 @@ int main(void)
         if(schedular_flg.flg_1sec==true)
         {
             schedular_flg.flg_1sec=false;
-            UART5_SendString("ALE...");
+            UART5_SendString("Data Successfully Execute \n");
            // toggleGPIO(PORTE,PIN4);
         }
 

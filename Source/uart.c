@@ -40,11 +40,13 @@ void UART5_Init(void) {
     UART5_CTL_R |= UART_CTL_RXE | UART_CTL_TXE | UART_CTL_UARTEN;
 
     UART5_IM_R |= UART_IM_RXIM; // Enable receive interrupt
-    NVIC_EN2_R |= (1 << (INT_UART5 - 16));
+    NVIC_EN0_R |= (1 << (INT_UART5 - 16));
 
 }
 
-void IntDefaultHandler(void) {
+void IntDefaultHandler(void)
+{
+
     // Check if the interrupt is caused by receiving data (RX interrupt)
     if (UART5_MIS_R & UART_MIS_RXMIS) {
         // Clear the interrupt flag for receive
@@ -60,6 +62,7 @@ void IntDefaultHandler(void) {
         // Optionally, you can process the received data here
         // Example: Print received data over UART (echo back)
         UART5_SendChar(receivedData);
+
     }
 }
 
