@@ -10,6 +10,6 @@
 
 
 
-
+void init_e2p(void);
 
 #endif /* SOURCE_EEPROM_H_ */

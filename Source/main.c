@@ -8,7 +8,7 @@
 #include "driverlib/interrupt.h"
 #include "uart.h"
 #include "driverlib/sysctl.h"
-//#include "eeprom.h"
+#include "eeprom.h"
 //#include "driverlib/eeprom.h"
 //#include "spi.h"
 
@@ -23,12 +23,13 @@ int main(void)
     //setGPIO_Direction(PORTE,PIN1,OUTPUT);
 
 
-    SysCtlClockSet(SYSCTL_SYSDIV_5 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
+   // SysCtlClockSet(SYSCTL_SYSDIV_5 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
     UART5_Init();
 
     writeGPIO(PORTE,PIN1,1);
     IntMasterEnable();
-
+     //__asm(" CPSIE I");      // enable
+    //__asm(" CPSID I");    // disable
     while(1)
     {
 

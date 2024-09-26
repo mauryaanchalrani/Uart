@@ -14,7 +14,6 @@
 
 
 void UART5_Init(void);
-void UART5_Handler0(void);
 void UART5_SendChar(char c);
 void UART5_SendString(const char* str);
 #endif /* SOURCE_UART_H_ */

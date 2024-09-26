@@ -11,6 +11,6 @@
 #define OUTPUT  (1)
 #define INPUT   (0)
 
-int init_e2p(void);
+
 
 #endif /* SOURCE_COMMON_H_ */

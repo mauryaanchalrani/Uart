@@ -16,7 +16,7 @@
 #include "eeprom.h"
 
 
-int init_e2p(void) {
+void init_e2p(void) {
 
     // Initialize EEPROM
      if(EEPROMInit() != EEPROM_INIT_OK) {
@@ -38,23 +38,38 @@ int init_e2p(void) {
     EEPROMProgram(&data, address, byteCount);
 
     // Read back data to verify
+//    uint32_t dataRead;
+
+//     EEPROMRead(&dataRead, address, byteCount);
+//
+//
+//     //Check if the data matches
+//      if (dataRead == data) {
+//        // Data was written and read correctly
+//       UART5_SendString("Data written and verified successfully\n");
+//
+//      }
+//      else {
+//        // Error: Data mismatch
+//        UART5_SendString("Error: Data mismatch\n");
+//      }
+
+    while(1){  // Infinite loop to end program
     uint32_t dataRead;
+    EEPROMRead(&dataRead, address, byteCount);
 
-     EEPROMRead(&dataRead, address, byteCount);
 
+         //Check if the data matches
+          if (dataRead == data) {
+            // Data was written and read correctly
+           UART5_SendString("Data written and verified successfully\n");
 
-     //Check if the data matches
-      if (dataRead == data) {
-        // Data was written and read correctly
-       UART5_SendString("Data written and verified successfully\n");
-
-      }
-      else {
-        // Error: Data mismatch
-        UART5_SendString("Error: Data mismatch\n");
-      }
-
-    while(1);  // Infinite loop to end program
+          }
+          else {
+            // Error: Data mismatch
+            UART5_SendString("Error: Data mismatch\n");
+          }
+    }
 }
 
 
