@@ -94,9 +94,30 @@ void UART5_SendString(const char* str) {
         str++;
     }
 }
+void UWriteBytes(unsigned char *str, int len)
+{
+    while(len)
+    {
+        UART5_SendChar(*str);
+        str++;
+        len--;
+    }
+}
+void UWriteInt(unsigned long num)
+{
+    char temp[30];
+    ltoa(num, temp, 10);              // @To convert integer to ASCII
+    UART5_SendString(temp);          // to send the entire string over uart
+    //UART5_SendChar((char*)temp);  // send a single character at a time
 
+}
 
-
+//   char temp[30];
+//   ltoa(num, temp, 10);
+//    int i=0;
+//   // Send each character of temp string one by one
+//   for(i = 0; temp[i] != '\0'; i++) {
+//       UART5_SendChar(temp[i]);
 
 
 

@@ -8,9 +8,9 @@
 #include "driverlib/interrupt.h"
 #include "uart.h"
 #include "driverlib/sysctl.h"
-//#include "eeprom.h"
-//#include "driverlib/eeprom.h"
-//#include "spi.h"
+#include "e2p.h"
+
+
 
 schedular_flg_t schedular_flg;
 
@@ -25,8 +25,18 @@ int main(void)
 
    // SysCtlClockSet(SYSCTL_SYSDIV_5 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
     UART5_Init();
+        SysCtlPeripheralEnable(SYSCTL_PERIPH_EEPROM0);
+        EEPROM_Init();
+
+             //Wait until the EEPROM module is ready
+            while(!SysCtlPeripheralReady(SYSCTL_PERIPH_EEPROM0)) {}
+
+            //SPI_Init();
+            //SPI_Write(0x55);                // Send 0x55 via SPI
+            //uint8_t receivedData = SPI_Read();
 
     writeGPIO(PORTE,PIN1,1);
+    EEPROM_Write(0x00,25);
     IntMasterEnable();
      __asm(" CPSIE I");      // enable
     //__asm(" CPSID I");    // disable
@@ -56,8 +66,16 @@ int main(void)
         }
         if(schedular_flg.flg_1sec==true)
         {
+
             schedular_flg.flg_1sec=false;
-            UART5_SendString("Data Successfully Execute \n");
+            UART5_SendString("\nData Successfully Execute");
+
+            uint32_t readData=25;  // = EEPROM_Read(0x00);
+            UART5_SendString("\nRead Data :");
+
+            readData = EEPROM_EERDWR_R;
+            UWriteInt(readData & 0xFF);
+           // UWriteBytes((char*)readData,sizeof(readData));
            // toggleGPIO(PORTE,PIN4);
         }
 

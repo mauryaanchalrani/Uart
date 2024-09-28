@@ -1,1 +1,1 @@
-"./tm4c1233e6pz_startup_ccs.obj" "./Source/GPIO.obj" "./Source/TIMER.obj" "./Source/TL.obj" "./Source/eeprom.obj" "./Source/main.obj" "./Source/spi.obj" "./Source/uart.obj" "../tm4c1233e6pz.cmd" -l"C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/ccs/Debug/driverlib.lib" -llibc.a 
+"./tm4c1233e6pz_startup_ccs.obj" "./Source/GPIO.obj" "./Source/TIMER.obj" "./Source/TL.obj" "./Source/e2p.obj" "./Source/main.obj" "./Source/spi.obj" "./Source/uart.obj" "../tm4c1233e6pz.cmd" -l"C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/ccs/Debug/driverlib.lib" -llibc.a 

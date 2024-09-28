@@ -1,3 +1,10 @@
+/*
+ * GPIO.c
+ *
+ *  Created on: 27-Sep-2024
+ *      Author: ANCHAL MAURYA
+ */
+
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -104,3 +111,5 @@ uint16_t getPortNum(uint32_t portBase)
            (portBase == PORTJ) ? PORTJ_NUM :
            (portBase == PORTK) ? PORTK_NUM : PORT_INVALID;
 }
+
+

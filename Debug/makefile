@@ -14,7 +14,7 @@ ORDERED_OBJS += \
 "./Source/GPIO.obj" \
 "./Source/TIMER.obj" \
 "./Source/TL.obj" \
-"./Source/eeprom.obj" \
+"./Source/e2p.obj" \
 "./Source/main.obj" \
 "./Source/spi.obj" \
 "./Source/uart.obj" \
@@ -164,8 +164,8 @@ TI_PERIPHERALS.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "tm4c1233e6pz_startup_ccs.obj" "Source\GPIO.obj" "Source\TIMER.obj" "Source\TL.obj" "Source\eeprom.obj" "Source\main.obj" "Source\spi.obj" "Source\uart.obj" 
-	-$(RM) "tm4c1233e6pz_startup_ccs.d" "Source\GPIO.d" "Source\TIMER.d" "Source\TL.d" "Source\eeprom.d" "Source\main.d" "Source\spi.d" "Source\uart.d" 
+	-$(RM) "tm4c1233e6pz_startup_ccs.obj" "Source\GPIO.obj" "Source\TIMER.obj" "Source\TL.obj" "Source\e2p.obj" "Source\main.obj" "Source\spi.obj" "Source\uart.obj" 
+	-$(RM) "tm4c1233e6pz_startup_ccs.d" "Source\GPIO.d" "Source\TIMER.d" "Source\TL.d" "Source\e2p.d" "Source\main.d" "Source\spi.d" "Source\uart.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
