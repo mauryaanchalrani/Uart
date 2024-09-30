@@ -36,7 +36,7 @@ int main(void)
             //uint8_t receivedData = SPI_Read();
 
     writeGPIO(PORTE,PIN1,1);
-    EEPROM_Write(0x00,25);
+    EEPROM_Write(0x00,30);
     IntMasterEnable();
      __asm(" CPSIE I");      // enable
     //__asm(" CPSID I");    // disable
@@ -44,38 +44,41 @@ int main(void)
     {
 
         //toggleGPIO(PORTF,PIN4);
-        //writeGPIO(PORTH,PIN1,1);
+       //writeGPIO(PORTH,PIN1,1);
 
         if(schedular_flg.flg_10ms==true)
         {
             schedular_flg.flg_10ms=false;
            // UART5_SendString("Wi-fi Connecting..\n");
-            //toggleGPIO(PORTE,PIN4);
+          //toggleGPIO(PORTE,PIN4);
         }
         if(schedular_flg.flg_50ms==true)
         {
             schedular_flg.flg_50ms=false;
            // toggleGPIO(PORTE,PIN0);
-            //UART5_SendString("Hello..\n");
+          //UART5_SendString("Hello..\n");
         }
         if(schedular_flg.flg_100ms==true)
         {
             schedular_flg.flg_100ms=false;
            // UART5_SendString("Anchal...\n");
-            //toggleGPIO(PORTE,PIN1);
+          //toggleGPIO(PORTE,PIN1);
         }
         if(schedular_flg.flg_1sec==true)
         {
 
             schedular_flg.flg_1sec=false;
             UART5_SendString("\nData Successfully Execute");
+           //uint32_t EEPROM_Write;
 
-            uint32_t readData=25;  // = EEPROM_Read(0x00);
+           uint32_t readData; // = EEPROM_Read(0x00);
+
             UART5_SendString("\nRead Data :");
 
-            readData = EEPROM_EERDWR_R;
+            //readData = EEPROM_EERDWR_R;
+            readData = EEPROM_Write;
             UWriteInt(readData & 0xFF);
-           // UWriteBytes((char*)readData,sizeof(readData));
+            // UWriteBytes((char*)readData,sizeof(readData));
            // toggleGPIO(PORTE,PIN4);
         }
 

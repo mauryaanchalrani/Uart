@@ -79,8 +79,6 @@ void IntUartHandler(void)
 }
 
 
-
-
 // Function to send a character over UART5
 void UART5_SendChar(char c) {
     while(UART5_FR_R & UART_FR_TXFF);
@@ -112,12 +110,7 @@ void UWriteInt(unsigned long num)
 
 }
 
-//   char temp[30];
-//   ltoa(num, temp, 10);
-//    int i=0;
-//   // Send each character of temp string one by one
-//   for(i = 0; temp[i] != '\0'; i++) {
-//       UART5_SendChar(temp[i]);
+
 
 
 

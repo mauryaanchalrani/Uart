@@ -22,7 +22,7 @@ void init_e2p(void);
 #define EEPROM_EERDWRINC_R     (*((volatile uint32_t *)0x400AF014))  // Read-Write with increment
 #define EEPROM_EEUNLOCK_R      (*((volatile uint32_t *)0x400AF020))  // For eeprom Unlock
 #define EEPROM_EEPROT_R        (*((volatile uint32_t *)0x400AF030))  // For protection
-//#define EEPROM_EEINT_R         (*((volatile uint32_t *)0x400FE040))  // eeprom interrupt
+
 
 #define SYSCTL_RCGC_EEPROM     0x1      // Enable EEPROM module
 #define EEPROM_DONE_WORKING    0x0      // EEPROM is ready for
