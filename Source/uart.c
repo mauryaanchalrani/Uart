@@ -57,7 +57,6 @@ void UART5_Init(void) {
 
 void IntUartHandler(void)
 {
-
     writeGPIO(PORTE,PIN1,0);
     // Check if the interrupt is caused by receiving data (RX interrupt)
     if (UART5_MIS_R & UART_MIS_RXMIS) {
@@ -74,7 +73,6 @@ void IntUartHandler(void)
         // Optionally, you can process the received data here
         // Example: Print received data over UART (echo back)
         UART5_SendChar(receivedData);
-
     }
 }
 

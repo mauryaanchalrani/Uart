@@ -27,10 +27,21 @@ void init_e2p(void);
 #define SYSCTL_RCGC_EEPROM     0x1      // Enable EEPROM module
 #define EEPROM_DONE_WORKING    0x0      // EEPROM is ready for
 
+typedef struct
+{
+    int date;
+    int month;
+    int year;
+    int time;
+    int hours;
+    int minutes;
+}myData_t;
+
 
 uint32_t EEPROM_Read(uint32_t ui32Address);
 
-void EEPROM_Write(uint32_t ui32Address, uint32_t ui32Data);
+void EEPROM_Write(uint32_t ui32Address, uint8_t *ui8Data, uint32_t ui32size); //void EEPROM0_Write(uint32_t ui32Address, uint32_t ui32Data);
+
 void EEPROM_Init(void);
 
 #endif /* SOURCE_E2P_H_ */

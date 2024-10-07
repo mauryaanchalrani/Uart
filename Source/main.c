@@ -11,8 +11,8 @@
 #include "e2p.h"
 
 
-
 schedular_flg_t schedular_flg;
+extern volatile myData_t myData;
 
 int main(void)
  {
@@ -36,7 +36,9 @@ int main(void)
             //uint8_t receivedData = SPI_Read();
 
     writeGPIO(PORTE,PIN1,1);
-    EEPROM_Write(0x00,30);
+    uint8_t data[] = {0x12, 0x34, 0x56};   //*******
+    EEPROM_Write(0x00, 40, sizeof(data));  //*******
+
     IntMasterEnable();
      __asm(" CPSIE I");      // enable
     //__asm(" CPSID I");    // disable
@@ -71,13 +73,13 @@ int main(void)
             UART5_SendString("\nData Successfully Execute");
            //uint32_t EEPROM_Write;
 
-           uint32_t readData; // = EEPROM_Read(0x00);
+            uint32_t value = EEPROM_Read(0x00);
 
             UART5_SendString("\nRead Data :");
 
             //readData = EEPROM_EERDWR_R;
-            readData = EEPROM_Write;
-            UWriteInt(readData & 0xFF);
+
+            UWriteInt(value & 0xFF);
             // UWriteBytes((char*)readData,sizeof(readData));
            // toggleGPIO(PORTE,PIN4);
         }
